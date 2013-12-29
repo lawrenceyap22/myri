@@ -119,7 +119,7 @@ public class GameScreen extends AbstractScreen {
 								- hero.getWidth() / 2) {
 					hero.setX(Math.min(
 							hero.getX() + Gdx.graphics.getDeltaTime() * 1000,
-							GAME_VIEWPORT_WIDTH - hero.getWidth()));
+							GAME_VIEWPORT_WIDTH - hero.getWidth() - hero.getWidth() / 2));
 				} else {
 					camera.position.x = Math.min(camera.position.x
 							+ Gdx.graphics.getDeltaTime() * 1000,
