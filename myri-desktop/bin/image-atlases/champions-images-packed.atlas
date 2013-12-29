@@ -1,0 +1,12 @@
+
+champions-images-packed.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Sample
+  rotate: false
+  xy: 2, 2
+  size: 250, 250
+  orig: 250, 250
+  offset: 0, 0
+  index: -1
