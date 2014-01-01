@@ -1,73 +1,63 @@
 package com.epicnoobz.myri.domain;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public abstract class UnitData {
+public abstract class Unit {
 
-	private double x;
-	private double y;
-	private double movSpeed;
+	public enum UnitAction {
+		IDLE, MOVE, ATTACK;
+
+		@Override
+		public String toString() {
+			return super.toString().toLowerCase();
+		}
+	}
+
+	private UnitAction action;
+	private double moveSpeed;
 	private double damage;
 	private double range;
 	private double health;
 	private double atkSpeed;
 	private double spawnTime;
-	private String texture;
+	private boolean alive;
 	
-	public UnitData(double movSpeed, double damage, double range,
-			double health, double atkSpeed, double spawnTime) {
-		this.x = 0;
-		this.y = 0;
-		this.movSpeed = movSpeed;
-		this.damage = damage;
-		this.range = range;
-		this.health = health;
-		this.atkSpeed = atkSpeed;
-		this.spawnTime = spawnTime;
+	protected TextureRegion currentFrame;
+	
+	public Unit(){
+		action = UnitAction.IDLE;
+		alive = true;
+	}
+	
+	public boolean isAlive(){
+		return alive;
+	}
+	
+	public void setAlive(boolean alive){
+		this.alive = alive;
+	}
+	
+	public void setAction(UnitAction action){
+		this.action = action;
+	}
+	
+	public UnitAction getCurrentAction(){
+		return action;
+	}
+	
+	/**
+	 * @return the moveSpeed
+	 */
+	public double getMoveSpeed() {
+		return moveSpeed;
 	}
 
 	/**
-	 * @return the x
+	 * @param moveSpeed
+	 *            the moveSpeed to set
 	 */
-	public double getX() {
-		return x;
-	}
-
-	/**
-	 * @param x
-	 *            the x to set
-	 */
-	public void setX(double x) {
-		this.x = x;
-	}
-
-	/**
-	 * @return the y
-	 */
-	public double getY() {
-		return y;
-	}
-
-	/**
-	 * @param y
-	 *            the y to set
-	 */
-	public void setY(double y) {
-		this.y = y;
-	}
-
-	/**
-	 * @return the movSpeed
-	 */
-	public double getMovSpeed() {
-		return movSpeed;
-	}
-
-	/**
-	 * @param movSpeed
-	 *            the movSpeed to set
-	 */
-	public void setMovSpeed(double movSpeed) {
-		this.movSpeed = movSpeed;
+	public void setMoveSpeed(double moveSpeed) {
+		this.moveSpeed = moveSpeed;
 	}
 
 	/**
@@ -145,12 +135,9 @@ public abstract class UnitData {
 		this.spawnTime = spawnTime;
 	}
 	
-	public String getTexture(){
-		return texture;
-	}
-	
-	public void setTexture(String texture){
-		this.texture = texture;
+	@Override
+	public String toString(){
+		return this.getClass().getSimpleName();
 	}
 
 }

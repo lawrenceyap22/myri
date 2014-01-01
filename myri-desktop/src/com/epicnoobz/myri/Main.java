@@ -11,6 +11,6 @@ public class Main {
 		cfg.width = 1900;
 		cfg.height = 1080;
 		
-		new LwjglApplication(new MyriGame(), cfg);
+		new LwjglApplication(MyriGame.getInstance(), cfg);
 	}
 }

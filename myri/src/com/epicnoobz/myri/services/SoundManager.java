@@ -29,7 +29,7 @@ public class SoundManager implements CacheEntryRemovedListener<MyriGameSound, So
 		soundCache = new LRUCache<SoundManager.MyriGameSound, Sound>(10);
 		soundCache.setEntryRemovedListener(this);
 	}
-	
+
 	public void play(MyriGameSound sound){
 		if(enabled){
 			Sound soundToPlay = soundCache.get(sound);

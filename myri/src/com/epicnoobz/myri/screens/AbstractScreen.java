@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.epicnoobz.myri.MyriGame;
 
 public class AbstractScreen implements Screen {
+
 	public static final int GAME_VIEWPORT_WIDTH = 1920;
 	public static final int GAME_VIEWPORT_HEIGHT = 1080;
 
@@ -54,7 +55,9 @@ public class AbstractScreen implements Screen {
 
 	public TextureAtlas getAtlas() {
 		if (atlas == null) {
-			atlas = new TextureAtlas(Gdx.files.internal("image-atlases/screens-images-packed.atlas")); 
+			atlas = new TextureAtlas(
+					Gdx.files
+							.internal("image-atlases/screens-images-packed.atlas"));
 		}
 		return atlas;
 	}
@@ -90,8 +93,8 @@ public class AbstractScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		Gdx.app.log(MyriGame.TAG, "Resizing screen: " + getName() + " to: " + width
-				+ " x " + height);
+		Gdx.app.log(MyriGame.TAG, "Resizing screen: " + getName() + " to: "
+				+ width + " x " + height);
 		stage.setViewport(width, height, true);
 
 	}
@@ -131,7 +134,8 @@ public class AbstractScreen implements Screen {
 			atlas.dispose();
 		if (skin != null)
 			skin.dispose();
-
+		if (stage != null)
+			stage.dispose();
 	}
 
 }

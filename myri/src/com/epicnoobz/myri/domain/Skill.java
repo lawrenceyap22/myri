@@ -55,5 +55,10 @@ public enum Skill {
 	public int getLevel() {
 		return level;
 	}
+	
+	@Override
+	public String toString(){
+		return super.toString().toLowerCase();
+	}
 
 }

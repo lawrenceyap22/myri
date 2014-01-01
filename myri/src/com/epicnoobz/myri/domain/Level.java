@@ -197,7 +197,8 @@ public class Level {
 	}
 
 	/**
-	 * @param foregroundWidth the foregroundWidth to set
+	 * @param foregroundWidth
+	 *            the foregroundWidth to set
 	 */
 	public void setForegroundWidth(int foregroundWidth) {
 		this.foregroundWidth = foregroundWidth;
@@ -211,7 +212,8 @@ public class Level {
 	}
 
 	/**
-	 * @param backgroundLayer1Width the backgroundLayer1Width to set
+	 * @param backgroundLayer1Width
+	 *            the backgroundLayer1Width to set
 	 */
 	public void setBackgroundLayer1Width(int backgroundLayer1Width) {
 		this.backgroundLayer1Width = backgroundLayer1Width;
@@ -225,7 +227,8 @@ public class Level {
 	}
 
 	/**
-	 * @param backgroundLayer2Width the backgroundLayer2Width to set
+	 * @param backgroundLayer2Width
+	 *            the backgroundLayer2Width to set
 	 */
 	public void setBackgroundLayer2Width(int backgroundLayer2Width) {
 		this.backgroundLayer2Width = backgroundLayer2Width;
@@ -239,11 +242,11 @@ public class Level {
 	}
 
 	/**
-	 * @param backgroundLayer3Width the backgroundLayer3Width to set
+	 * @param backgroundLayer3Width
+	 *            the backgroundLayer3Width to set
 	 */
 	public void setBackgroundLayer3Width(int backgroundLayer3Width) {
 		this.backgroundLayer3Width = backgroundLayer3Width;
 	}
-
 
 }

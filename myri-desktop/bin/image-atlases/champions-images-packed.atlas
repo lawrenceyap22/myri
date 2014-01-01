@@ -3,10 +3,17 @@ champions-images-packed.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Sample
+paladin/idle
+  rotate: false
+  xy: 196, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+paladin/move
   rotate: false
   xy: 2, 2
-  size: 250, 250
-  orig: 250, 250
+  size: 192, 64
+  orig: 192, 64
   offset: 0, 0
   index: -1

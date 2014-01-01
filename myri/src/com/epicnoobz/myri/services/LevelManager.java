@@ -37,6 +37,4 @@ public class LevelManager {
 		}
 		return levels.get(id);
 	}
-	
-	
 }

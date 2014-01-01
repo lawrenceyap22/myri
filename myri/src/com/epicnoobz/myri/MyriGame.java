@@ -20,7 +20,14 @@ public class MyriGame extends Game {
 	private SoundManager soundManager;
 	private PreferencesManager preferencesManager;
 	private LevelManager levelManager;
+	private static MyriGame instance = null;
 	
+	public static synchronized MyriGame getInstance(){
+		if(instance == null){
+			instance = new MyriGame();
+		}
+		return instance;
+	}
 	
 	/**
 	 * @return the musicManager
@@ -71,9 +78,6 @@ public class MyriGame extends Game {
 
 	@Override
 	public void dispose() {
-		// batch.dispose();
-		// texture.dispose();
-
 		super.dispose();
 		Gdx.app.log(TAG, "Disposing game");
 	}
