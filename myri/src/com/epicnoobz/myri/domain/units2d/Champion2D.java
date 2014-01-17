@@ -44,39 +44,33 @@ public abstract class Champion2D extends Unit2D {
 		GameTouchpad touchpad = GameTouchpad.getInstance();
 		Camera camera = GameScreen.getCamera();
 		int levelSize = GameScreen.getLevelSize();
-		double x = Math.abs(touchpad.getTouchpad().getKnobPercentX());
-		double y = Math.abs(touchpad.getTouchpad().getKnobPercentY());
-		double rad = Math.atan(y / x);
-		double degrees = Math.toDegrees(rad);
 
-		if (degrees <= 65) {
+		if (touchpad.getDirectionX() > 0) { // move right
 			champion.setAction(UnitAction.MOVE);
-			if (touchpad.getTouchpad().getKnobPercentX() > 0) { // move right
-				if (camera.position.x == 0
-						&& getX() < camera.viewportWidth / 2 - getWidth() / 2) {
-					setX(Math.min(getX() + delta * 1000, camera.viewportWidth
-							/ 2 - getWidth() / 2));
-				} else if (camera.position.x == levelSize
-						- camera.viewportWidth
-						&& getX() >= camera.viewportWidth / 2 - getWidth() / 2) {
-					setX(Math.min(getX() + delta * 1000, camera.viewportWidth
-							- getWidth() - getWidth() / 2));
-				} else {
-					camera.position.x = Math.min(camera.position.x + delta
-							* 1000, levelSize - camera.viewportWidth);
-				}
-			} else { // move left
-				if (camera.position.x == levelSize - camera.viewportWidth
-						&& getX() > camera.viewportWidth / 2 - getWidth() / 2) {
-					setX(Math.max(getX() - delta * 1000, camera.viewportWidth
-							/ 2 - getWidth() / 2));
-				} else if (camera.position.x == 0
-						&& getX() <= camera.viewportWidth / 2 - getWidth() / 2) {
-					setX(Math.max(getX() - delta * 1000, 0));
-				} else {
-					camera.position.x = Math.max(camera.position.x - delta
-							* 1000, 0);
-				}
+			if (camera.position.x == 0
+					&& getX() < camera.viewportWidth / 2 - getWidth() / 2) {
+				setX(Math.min(getX() + delta * 1000, camera.viewportWidth / 2
+						- getWidth() / 2));
+			} else if (camera.position.x == levelSize - camera.viewportWidth
+					&& getX() >= camera.viewportWidth / 2 - getWidth() / 2) {
+				setX(Math.min(getX() + delta * 1000, camera.viewportWidth
+						- getWidth()));
+			} else {
+				camera.position.x = Math.min(camera.position.x + delta * 1000,
+						levelSize - camera.viewportWidth);
+			}
+		} else if (touchpad.getDirectionX() < 0) { // move left
+			champion.setAction(UnitAction.MOVE);
+			if (camera.position.x == levelSize - camera.viewportWidth
+					&& getX() > camera.viewportWidth / 2 - getWidth() / 2) {
+				setX(Math.max(getX() - delta * 1000, camera.viewportWidth / 2
+						- getWidth() / 2));
+			} else if (camera.position.x == 0
+					&& getX() <= camera.viewportWidth / 2 - getWidth() / 2) {
+				setX(Math.max(getX() - delta * 1000, 0));
+			} else {
+				camera.position.x = Math.max(camera.position.x - delta * 1000,
+						0);
 			}
 		} else {
 			champion.setAction(UnitAction.IDLE);

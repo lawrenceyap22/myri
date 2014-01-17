@@ -8,7 +8,7 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "myri";
 		cfg.useGL20 = false;
-		cfg.width = 1900;
+		cfg.width = 1920;
 		cfg.height = 1080;
 		
 		new LwjglApplication(MyriGame.getInstance(), cfg);
