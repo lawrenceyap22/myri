@@ -1,29 +1,31 @@
 package com.epicnoobz.myri.domain;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Champion extends Unit {
 
-	private List<Skill> skills;
+	private Map<String, Skill> skills;
 	private Skill activeSkill;
 	
 	public Champion() {
-		skills = new ArrayList<Skill>();
+		skills = new TreeMap<String,Skill>();
 		activeSkill = null;
 	}
 
 	public List<Skill> getSkills() {
-		return skills;
+		return new ArrayList<Skill>(skills.values());
 	}
 	
 	public void addSkill(Skill skill){
-		skills.add(skill);
+		skills.put(skill.toString(), skill);
 	}
 	
-	public void setActiveSkill(Skill skill){
-		if(skills.contains(skill))
-			activeSkill = skill;
+	public void setActiveSkill(String key){
+		if(skills.containsKey(key))
+			activeSkill = skills.get(key);
 		else
 			activeSkill = null;
 	}

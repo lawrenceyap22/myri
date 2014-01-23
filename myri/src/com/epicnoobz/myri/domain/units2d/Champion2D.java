@@ -26,9 +26,7 @@ public abstract class Champion2D extends Unit2D {
 	@Override
 	protected synchronized TextureAtlas getAtlas() {
 		if (atlas == null) {
-			atlas = new TextureAtlas(
-					Gdx.files
-							.internal("image-atlases/champions-images-packed.atlas"));
+			atlas = new TextureAtlas(Gdx.files.internal("image-atlases/champions-images-packed.atlas"));
 		}
 		return atlas;
 	}
@@ -87,8 +85,7 @@ public abstract class Champion2D extends Unit2D {
 		TextureRegion currentFrame = null;
 		Skill activeSkill = champion.getActiveSkill();
 		if (activeSkill != null) {
-			currentFrame = skillAnimations.get(activeSkill).getKeyFrame(
-					stateTime += delta);
+			currentFrame = skillAnimations.get(activeSkill).getKeyFrame(stateTime += delta);
 			setDrawable(animationDrawables.get(currentFrame));
 		} else {
 			super.animate(delta);

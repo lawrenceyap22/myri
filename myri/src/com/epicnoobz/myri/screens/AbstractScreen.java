@@ -55,9 +55,7 @@ public class AbstractScreen implements Screen {
 
 	public TextureAtlas getAtlas() {
 		if (atlas == null) {
-			atlas = new TextureAtlas(
-					Gdx.files
-							.internal("image-atlases/screens-images-packed.atlas"));
+			atlas = new TextureAtlas(Gdx.files.internal("image-atlases/screens-images-packed.atlas"));
 		}
 		return atlas;
 	}
@@ -102,25 +100,21 @@ public class AbstractScreen implements Screen {
 	@Override
 	public void show() {
 		Gdx.app.log(MyriGame.TAG, "Showing screen: " + getName());
-		Gdx.input.setInputProcessor(stage);
 	}
 
 	@Override
 	public void hide() {
 		Gdx.app.log(MyriGame.TAG, "Hiding screen: " + getName());
-		dispose();
 	}
 
 	@Override
 	public void pause() {
 		Gdx.app.log(MyriGame.TAG, "Pausing screen: " + getName());
-
 	}
 
 	@Override
 	public void resume() {
 		Gdx.app.log(MyriGame.TAG, "Resuming screen: " + getName());
-
 	}
 
 	@Override

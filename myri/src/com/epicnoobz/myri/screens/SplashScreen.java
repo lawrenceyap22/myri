@@ -43,5 +43,11 @@ public class SplashScreen extends AbstractScreen {
 		stage.addActor(splashImage);
 
 	}
+	
+	@Override
+	public void hide(){
+		super.hide();
+		dispose();
+	}
 
 }

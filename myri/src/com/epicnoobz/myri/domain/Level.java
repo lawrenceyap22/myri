@@ -8,11 +8,13 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Disposable;
+import com.epicnoobz.myri.MyriGame;
 import com.epicnoobz.myri.screens.AbstractScreen;
 import com.epicnoobz.myri.screens.graphics.ParallaxBackground;
 import com.epicnoobz.myri.screens.graphics.ParallaxLayer;
 
-public class Level {
+public class Level implements Disposable{
 	private final int id;
 	private String name;
 	private boolean completed;
@@ -22,6 +24,7 @@ public class Level {
 	private int foregroundWidth, backgroundLayer1Width, backgroundLayer2Width,
 			backgroundLayer3Width = 0;
 	private Texture background;
+	private ParallaxLayer[] layers;
 
 	public Level(int id) {
 		this.id = id;
@@ -100,7 +103,7 @@ public class Level {
 	public void setParallaxBackground() {
 		int arrSize = foreground.size() + backgroundLayer1.size()
 				+ backgroundLayer2.size() + backgroundLayer3.size();
-		ParallaxLayer[] layers = new ParallaxLayer[arrSize];
+		layers = new ParallaxLayer[arrSize];
 
 		// parallax layer for 3rd background layer
 		for (int i = 0; i < backgroundLayer3.size(); i++) {
@@ -247,6 +250,28 @@ public class Level {
 	 */
 	public void setBackgroundLayer3Width(int backgroundLayer3Width) {
 		this.backgroundLayer3Width = backgroundLayer3Width;
+	}
+
+	@Override
+	public void dispose() {
+		Gdx.app.log(MyriGame.TAG, "Disposing level " + id);
+		for(Texture texture:foreground){
+			texture.dispose();
+		}
+		for(Texture texture:backgroundLayer1){
+			texture.dispose();
+		}
+		for(Texture texture:backgroundLayer2){
+			texture.dispose();
+		}
+		for(Texture texture:backgroundLayer3){
+			texture.dispose();
+		}
+		for(ParallaxLayer layer:layers){
+			layer.dispose();
+		}
+		if(background != null)
+			background.dispose();
 	}
 
 }

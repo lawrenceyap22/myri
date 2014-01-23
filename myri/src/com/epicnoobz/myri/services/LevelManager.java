@@ -3,10 +3,13 @@ package com.epicnoobz.myri.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Disposable;
+import com.epicnoobz.myri.MyriGame;
 import com.epicnoobz.myri.domain.Level;
 
-public class LevelManager {
+public class LevelManager implements Disposable{
 	private final List<Level> levels;
 	
 	public LevelManager(){
@@ -36,5 +39,13 @@ public class LevelManager {
 			return null;
 		}
 		return levels.get(id);
+	}
+
+	@Override
+	public void dispose() {
+		Gdx.app.log(MyriGame.TAG, "Disposing level manager");
+		for(Level level : levels){
+			level.dispose();
+		}
 	}
 }

@@ -21,14 +21,14 @@ public class MyriGame extends Game {
 	private PreferencesManager preferencesManager;
 	private LevelManager levelManager;
 	private static MyriGame instance = null;
-	
-	public static synchronized MyriGame getInstance(){
-		if(instance == null){
+
+	public static synchronized MyriGame getInstance() {
+		if (instance == null) {
 			instance = new MyriGame();
 		}
 		return instance;
 	}
-	
+
 	/**
 	 * @return the musicManager
 	 */
@@ -49,42 +49,47 @@ public class MyriGame extends Game {
 	public PreferencesManager getPreferencesManager() {
 		return preferencesManager;
 	}
-	
+
 	/*
 	 * @return the levelManager
 	 */
-	public LevelManager getLevelManager(){
+	public LevelManager getLevelManager() {
 		return levelManager;
 	}
 
 	@Override
 	public void create() {
 		fpsLogger = new FPSLogger();
-        // create the preferences manager
-        preferencesManager = new PreferencesManager();
+		// create the preferences manager
+		preferencesManager = new PreferencesManager();
 
-        // create the music manager
-        musicManager = new MusicManager();
-        musicManager.setVolume( preferencesManager.getMusicVolume() );
-        musicManager.setEnabled( preferencesManager.isMusicEnabled() );
+		// create the music manager
+		musicManager = new MusicManager();
+		musicManager.setVolume(preferencesManager.getMusicVolume());
+		musicManager.setEnabled(preferencesManager.isMusicEnabled());
 
-        // create the sound manager
-        soundManager = new SoundManager();
-        soundManager.setVolume( preferencesManager.getSoundVolume() );
-        soundManager.setEnabled( preferencesManager.isSoundEnabled() );
-        
-        levelManager = new LevelManager();
+		// create the sound manager
+		soundManager = new SoundManager();
+		soundManager.setVolume(preferencesManager.getSoundVolume());
+		soundManager.setEnabled(preferencesManager.isSoundEnabled());
+
+		levelManager = new LevelManager();
 	}
 
 	@Override
 	public void dispose() {
 		super.dispose();
+		if(musicManager != null)
+			musicManager.dispose();
+		if(soundManager != null)
+			soundManager.dispose();
+		if(levelManager != null)
+			levelManager.dispose();
 		Gdx.app.log(TAG, "Disposing game");
 	}
 
 	@Override
 	public void render() {
-
 		super.render();
 		if (DEV_MODE) {
 			fpsLogger.log();
@@ -95,11 +100,13 @@ public class MyriGame extends Game {
 	public void resize(int width, int height) {
 		super.resize(width, height);
 		Gdx.app.log(MyriGame.TAG, "Resizing game to: " + width + " x " + height);
-		if (DEV_MODE) {
-			//TODO setScreen(new MenuScreen(this));
-			setScreen(new GameScreen(this, 0));
-		} else {
-			setScreen(new SplashScreen(this));
+		if(getScreen() == null){
+			if (DEV_MODE) {
+				// TODO setScreen(new MenuScreen(this));
+				setScreen(new GameScreen(this, 0));
+			} else {
+				setScreen(new SplashScreen(this));
+			}
 		}
 	}
 
@@ -118,7 +125,6 @@ public class MyriGame extends Game {
 	@Override
 	public void setScreen(Screen screen) {
 		super.setScreen(screen);
-		Gdx.app.log(MyriGame.TAG, "Setting screen to "
-				+ screen.getClass().getSimpleName());
+		Gdx.app.log(MyriGame.TAG, "Setting screen to " + screen.getClass().getSimpleName());
 	}
 }

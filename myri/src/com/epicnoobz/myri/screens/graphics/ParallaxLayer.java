@@ -1,9 +1,12 @@
 package com.epicnoobz.myri.screens.graphics;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Disposable;
+import com.epicnoobz.myri.MyriGame;
 
-public class ParallaxLayer {
+public class ParallaxLayer implements Disposable{
 	private Texture texture;
 	private Vector2 parallaxRatio;
 	private Vector2 startPosition;
@@ -58,6 +61,12 @@ public class ParallaxLayer {
 	 */
 	public Vector2 getPadding() {
 		return padding;
+	}
+
+	@Override
+	public void dispose() {
+		Gdx.app.log(MyriGame.TAG, "Disposing parallax layer");
+		texture.dispose();
 	}
 	
 	

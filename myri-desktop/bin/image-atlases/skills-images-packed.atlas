@@ -1,0 +1,33 @@
+
+skills-images-packed.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+devotion
+  rotate: false
+  xy: 2, 2
+  size: 229, 230
+  orig: 229, 230
+  offset: 0, 0
+  index: -1
+heal
+  rotate: false
+  xy: 693, 4
+  size: 228, 228
+  orig: 228, 228
+  offset: 0, 0
+  index: -1
+shield_charge
+  rotate: false
+  xy: 233, 2
+  size: 228, 230
+  orig: 228, 230
+  offset: 0, 0
+  index: -1
+vanguard
+  rotate: false
+  xy: 463, 2
+  size: 228, 230
+  orig: 228, 230
+  offset: 0, 0
+  index: -1
